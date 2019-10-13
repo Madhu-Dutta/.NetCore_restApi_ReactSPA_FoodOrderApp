@@ -1,0 +1,42 @@
+.container#content{
+    padding-top: 0%;
+    border-top: 0%;
+    margin-bottom: 12%;
+    margin-top: 60px;
+}
+  body {
+    /* background-color: #353535;  */
+    /* font-family: $site-font; */
+  }
+  a {
+    color: #0056b3;
+  }
+  a:hover {
+    color: #007bff;
+    text-decoration: none;
+  }
+  h1 {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .navbar {
+    background-color: white;
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    line-height: 1;
+  }
+  .navbar-light .navbar-nav .nav-link,
+  .navbar-light .navbar-brand {
+    color: #353535;    
+  }
+  .navbar-light .navbar-nav .nav-link,
+  .navbar-light .navbar-brand:hover {
+    color: #353535;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  

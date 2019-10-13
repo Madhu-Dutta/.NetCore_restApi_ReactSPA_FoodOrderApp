@@ -1,0 +1,28 @@
+.site-footer {
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    padding-top: 80px;
+    text-align: center;
+    background-color: #101010;
+}
+.footer-social-links {
+    text-align: center;
+}
+.social-links-list ,ul, li {    
+    margin-right: 25px;
+    display: inline-block;
+}
+.link-title{
+    font-weight: bold;
+    color: #727272;
+}
+.instagram,.facebook,.twitter,.linkedin, .github {
+    color: #F9F9F9;
+}
+.instagram:hover,.facebook:hover,.twitter:hover,.linkedin:hover, .github:hover {
+    color: rgb(119, 115, 115);
+}
+
+
+            
