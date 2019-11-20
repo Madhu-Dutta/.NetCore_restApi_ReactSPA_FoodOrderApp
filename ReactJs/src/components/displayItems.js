@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { Table } from 'reactstrap';
 
-class Main extends React.Component {
+const apiUrl = 'http://localhost:59550/api/fooditems';  
+
+class DisplayItems extends React.Component {
 
     constructor() {
         super();
@@ -10,15 +12,15 @@ class Main extends React.Component {
     }
     ////Local Url
     state = {
-        foods: []
+        foods: [],
+        id: ''  
     }
-
 
     componentDidMount() {
         console.log("Component did mount");
 
         ////Local Url
-        axios.get('http://localhost:59550/api/fooditems')
+        axios.get(apiUrl)
             //get all the data as promise in the response
             .then(response => {
                 this.setState({
@@ -27,7 +29,22 @@ class Main extends React.Component {
             })
             //catch all the errors
             .catch(error => console.log(error)
-            )
+        )
+    }   
+
+    deleteFood = id => {
+        console.log('delete item');
+        console.log("This will print the name", this.state.name);
+       
+        const { foods } = this.state;
+        axios.delete(apiUrl + '/' + id).then(res => {
+            alert("Delete the response data" + res.data);
+            this.setState({
+                response : res,
+                foods: foods.filter(food=>food.foodItemId !== food.id)
+            })
+        })
+        
     }
 
     render() {
@@ -46,32 +63,33 @@ class Main extends React.Component {
                     <Table dark className="table-container">
                         <thead>
                             <tr>
-                                <td>ID</td>
                                 <td>Dish</td>
                                 <td>Name</td>
                                 <td>Description</td>
                                 <td>Price</td>
+                                <td>Delete</td>
                             </tr>
                         </thead>
                         <tbody>
                             {this.state.foods.map(food => {
                                 return (
-                                    <tr>
-                                        <td key={food.foodItemId}>{food.foodItemId}</td>
-                                        <td key={food.foodItemId} ><img className="food" src={food.picture} alt="menu-images" /></td>
-                                        <td key={food.foodItemId} >{food.name}</td>
-                                        <td key={food.foodItemId} >{food.description}</td>
-                                        <td key={food.foodItemId} >${food.price}</td>
+                                        <tr key={food.foodItemId}>
+                                        <td ><img className="food" src={food.picture} alt="menu-images" /></td>
+                                        <td >{food.name}</td>
+                                        <td >{food.description}</td>
+                                        <td >${food.price}</td>                                        
+                                        <td>
+                                            <button onClick={() => this.deleteFood(food.foodItemId)}>Delete</button>
+                                        </td>                                       
                                     </tr>
                                 )
                             })}
                         </tbody>
-                    </Table>
-                </div>
+                    </Table>                   
+            </div>
             )
         }
-
     }
 }
 
-export default Main;
+export default DisplayItems;
